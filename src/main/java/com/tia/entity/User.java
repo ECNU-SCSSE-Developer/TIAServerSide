@@ -1,31 +1,24 @@
 package com.tia.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
     private String studentId;
+
     private String studentName;
-    private String specialty;
-    private String contacts;
-    private String major;
+
     private Integer grade;
-    // TODO: The following two items are not completed for DAO.
-    private Float ranks;
-//    private List<String> comments = new ArrayList<String>();
 
-    // 和Recruitment的联系集
-    private List<Recruitment> focused = new ArrayList<Recruitment>();
-    private List<Recruitment> registered = new ArrayList<Recruitment>();
-    private List<Recruitment> created = new ArrayList<Recruitment>();
+    private String major;
 
+    private String contacts;
+
+    private String specialty;
 
     public String getStudentId() {
         return studentId;
     }
 
     public void setStudentId(String studentId) {
-        this.studentId = studentId;
+        this.studentId = studentId == null ? null : studentId.trim();
     }
 
     public String getStudentName() {
@@ -33,31 +26,7 @@ public class User {
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
-    public String getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
+        this.studentName = studentName == null ? null : studentName.trim();
     }
 
     public Integer getGrade() {
@@ -68,35 +37,43 @@ public class User {
         this.grade = grade;
     }
 
-    public Float getRanks() {
-        return ranks;
+    public String getMajor() {
+        return major;
     }
 
-    public void setRanks(Float ranks) {
-        this.ranks = ranks;
+    public void setMajor(String major) {
+        this.major = major == null ? null : major.trim();
     }
 
-    public List<Recruitment> getFocused() {
-        return focused;
+    public String getContacts() {
+        return contacts;
     }
 
-    public void setFocused(List<Recruitment> focused) {
-        this.focused = focused;
+    public void setContacts(String contacts) {
+        this.contacts = contacts == null ? null : contacts.trim();
     }
 
-    public List<Recruitment> getRegistered() {
-        return registered;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public void setRegistered(List<Recruitment> registered) {
-        this.registered = registered;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty == null ? null : specialty.trim();
     }
 
-    public List<Recruitment> getCreated() {
-        return created;
-    }
-
-    public void setCreated(List<Recruitment> created) {
-        this.created = created;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", studentId=").append(studentId);
+        sb.append(", studentName=").append(studentName);
+        sb.append(", grade=").append(grade);
+        sb.append(", major=").append(major);
+        sb.append(", contacts=").append(contacts);
+        sb.append(", specialty=").append(specialty);
+        sb.append("]");
+        return sb.toString();
     }
 }

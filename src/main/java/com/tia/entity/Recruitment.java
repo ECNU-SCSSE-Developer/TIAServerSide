@@ -1,27 +1,21 @@
 package com.tia.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Recruitment {
-    private Long recruitId;
+    private Integer recruitId;
+
     private String recruitName;
+
     private String recruitDescription;
+
     private String recruitRequirements;
+
     private Integer registeredNumber;
-//    private List<String> recruitType = new ArrayList<String>();
-    //
-    // 联系集
-    private List<String> applicantId = new ArrayList<String>();
-    private Long matchId;
 
-
-
-    public Long getRecruitId() {
+    public Integer getRecruitId() {
         return recruitId;
     }
 
-    public void setRecruitId(Long recruitId) {
+    public void setRecruitId(Integer recruitId) {
         this.recruitId = recruitId;
     }
 
@@ -30,7 +24,7 @@ public class Recruitment {
     }
 
     public void setRecruitName(String recruitName) {
-        this.recruitName = recruitName;
+        this.recruitName = recruitName == null ? null : recruitName.trim();
     }
 
     public String getRecruitDescription() {
@@ -38,7 +32,7 @@ public class Recruitment {
     }
 
     public void setRecruitDescription(String recruitDescription) {
-        this.recruitDescription = recruitDescription;
+        this.recruitDescription = recruitDescription == null ? null : recruitDescription.trim();
     }
 
     public String getRecruitRequirements() {
@@ -46,15 +40,7 @@ public class Recruitment {
     }
 
     public void setRecruitRequirements(String recruitRequirements) {
-        this.recruitRequirements = recruitRequirements;
-    }
-
-    public Long getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(Long matchId) {
-        this.matchId = matchId;
+        this.recruitRequirements = recruitRequirements == null ? null : recruitRequirements.trim();
     }
 
     public Integer getRegisteredNumber() {
@@ -65,11 +51,18 @@ public class Recruitment {
         this.registeredNumber = registeredNumber;
     }
 
-    public List<String> getApplicantId() {
-        return applicantId;
-    }
-
-    public void setApplicantId(List<String> applicantId) {
-        this.applicantId = applicantId;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", recruitId=").append(recruitId);
+        sb.append(", recruitName=").append(recruitName);
+        sb.append(", recruitDescription=").append(recruitDescription);
+        sb.append(", recruitRequirements=").append(recruitRequirements);
+        sb.append(", registeredNumber=").append(registeredNumber);
+        sb.append("]");
+        return sb.toString();
     }
 }
