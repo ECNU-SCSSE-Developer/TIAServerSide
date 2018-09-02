@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD com.tia.mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tia.mapper.UserMapper">
+
+    <resultMap id="RecruitmentResult" type="com.tia.entity.Recruitment">
+        <id property="recruitId" column="recruit_id"/>
+        <result property="recruitName" column="recruit_name"/>
+        <result property="recruitDescription" column="recruit_description"/>
+        <result property="recruitRequirements" column="recruit_requirements"/>
+        <result property="matchId" column="match_id"/>
+        <result property="registeredNumber" column="registered_number"/>
+        <collection property="applicantId" column="recruit_id" ofType="string" select="selectApplicantsForRecruit"/>
+        <!--<collection property="recruitType" column="" ofType="String" select=""/>-->
+    </resultMap>
+
+    <select id="selectApplicantsForRecruit" resultType="string">
+        SELECT applicant_id FROM `Recruit_Applicants`
+        WHERE recruit_id = #{recruitId}
+    </select>
+
+
+</mapper>
